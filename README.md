@@ -1,21 +1,35 @@
 # GLaDOS Text-to-speech (TTS) Voice Generator
 Neural network based TTS Engine.
 
-If you want to just play around with the TTS, this works as stand-alone.
-```console
-python3 glados-tts/glados.py
-```
+## Installation Instruction
+If you want to install the TTS Engine on your machine, please follow the steps
+below.
 
-the TTS Engine can also be used remotely on a machine more powerful then the Pi to process in house TTS: (executed from glados-tts directory
-```console
-python3 engine-remote.py
+1. Install the required Python packages, e.g., by running `pip install -r
+   requirements.txt`
+
+I personally just ignored warnings about Torch since I'm not training the model.
+
+
+## Running the Synthesizer
+```
+python3 engine.py
 ```
 
 Default port is 8124
-Be sure to update settings.env variable in your main Glados-voice-assistant directory:
 ```
-TTS_ENGINE_API			= http://192.168.1.3:8124/synthesize/
+http://localhost:8124/synthesize/
 ```
+
+Provide text after Synthesize.
+Most modern browsers will encode whatever string you slap into the URL bar after `*/synthesize/`
+
+e.g.:
+```
+http://127.0.0.1:8124/synthesize/This%20is%20a%20triumph.%20I'm%20making%20a%20note%20here:%20HUGE%20SUCCESS.
+```
+
+Streamed file is a .wav.
 
 
 ## Training (New Model)
@@ -31,10 +45,3 @@ The initial, regular Tacotron model was trained first on LJSpeech, and then on a
 
 
 
-## Installation Instruction
-If you want to install the TTS Engine on your machine, please follow the steps
-below.
-
-1. Download the model files from [`Google Drive`](https://drive.google.com/file/d/1TRJtctjETgVVD5p7frSVPmgw8z8FFtjD/view?usp=sharing) and unzip into the repo folder
-2. Install the required Python packages, e.g., by running `pip install -r
-   requirements.txt`
